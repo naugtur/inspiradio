@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inspiradio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .download-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .download-box h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .download-link {
+            display: inline-block;
+            color: #222;
+            margin: 10px 0;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .download-all-btn {
+            margin: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .download-all-btn:active {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="download-box">
+        <h1>🎵 inspiradio</h1>
+        <p>Przykłady na zajęcia</p>
+        <button id="downloadAll" class="download-all-btn">📥 Ściągnij wszystkie</button>
+        <div class="links-container">
+            <a href="./przyklad1.wav" class="download-link" download>🎙️ przyklad1</a>
+            <a href="./przyklad2.wav" class="download-link" download>🎙️ przyklad2</a>
+            <a href="./przyklad3.wav" class="download-link" download>🎙️ przyklad3</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadAll').addEventListener('click', function() {
+            const downloadLinks = document.querySelectorAll('.download-link');
+            
+            downloadLinks.forEach((link, index) => {
+                setTimeout(() => {
+                    link.click();
+                }, index * 1500);
+            });
+        });
+    </script>
+</body>
+</html>
